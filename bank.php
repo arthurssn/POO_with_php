@@ -1,11 +1,11 @@
 <?php
 
-require_once 'src/Person.php';
-require_once 'src/Account.php';
-require_once 'src/OwnerAccount.php';
-require_once 'src/CPF.php';
-require_once 'src/Address.php';
-require_once 'src/Employee.php';
+require_once 'autoload.php';
+
+use Bank\Model\Account\OwnerAccount;
+use Bank\Model\Address;
+use Bank\Model\CPF;
+use Bank\Model\Employee;
 
 $cpfOwnerAcc = new CPF('123.456.789-10');
 $nameOwnerAcc = "Arthur";

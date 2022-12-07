@@ -1,5 +1,5 @@
 <?php
-
+namespace Bank\Model\Account;
 class Account
 {
     private static int $numberOfAccountsCreated = 0;

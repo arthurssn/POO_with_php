@@ -1,4 +1,6 @@
 <?php
+namespace Bank\Model\Account;
+use Bank\Model\{Person, Address, CPF};
 
 class OwnerAccount extends Person
 {

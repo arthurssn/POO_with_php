@@ -1,5 +1,5 @@
 <?php
-
+namespace Bank\Model;
 class Employee extends Person
 {
     private string $office;
