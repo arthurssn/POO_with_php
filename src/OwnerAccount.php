@@ -1,27 +1,13 @@
 <?php
 
-class OwnerAccount
+class OwnerAccount extends Person
 {
-    private string $cpfOwnerAcc;
-    private string $nameOwnerAcc;
     private Address $address;
 
-    public function __construct(CPF $cpfOwnerAcc, string $nameOwnerAcc, Address $address)
+    public function __construct(CPF $employeesCpfOwnerAcc, string $employeesNameOwnerAcc, Address $address)
     {
-        $this->cpfOwnerAcc = $cpfOwnerAcc->getNumberCPF();
-        $this->nameOwnerAcc = $nameOwnerAcc;
+        parent::__construct($employeesCpfOwnerAcc, $employeesNameOwnerAcc);
         $this->address = $address;
-
-    }
-
-    public function getCpfOwnerAcc(): string
-    {
-        return $this->cpfOwnerAcc;
-    }
-
-    public function getNameOwnerAcc(): string
-    {
-        return $this->nameOwnerAcc;
     }
 
     public function getAddress(): Address

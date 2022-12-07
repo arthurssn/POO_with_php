@@ -1,19 +1,21 @@
 <?php
 
+require_once 'src/Person.php';
 require_once 'src/Account.php';
 require_once 'src/OwnerAccount.php';
 require_once 'src/CPF.php';
 require_once 'src/Address.php';
+require_once 'src/Employee.php';
 
-$cpfUser = new CPF('123.456.789-10');
-$addressUser = new Address('Cidade', 'Bairro', 'Rua', 'Numero');
-$user = new OwnerAccount($cpfUser, 'User', $addressUser);
+$cpfOwnerAcc = new CPF('123.456.789-10');
+$nameOwnerAcc = "Arthur";
+$address = new Address("Cidade", "Bairro", "Rua", "123");
+$user = new OwnerAccount($cpfOwnerAcc, $nameOwnerAcc, $address);
 
-$newAcc1 = new Account($user);
-$newAcc1->depositMoney(1000);
-$accBalance = $newAcc1->getAccountBalance();
-echo $newAcc1->getAccountBalance() . PHP_EOL;
+$cpf = new CPF('123.456.789-10');
+$name = "Arthur";
+$office = "Programador";
+$employee = new Employee($cpf, $name, $office);
 
-echo Account::getNumberOfAccountsCreated();
-
-var_dump($newAcc1);
+var_dump($employee);
+var_dump($user);

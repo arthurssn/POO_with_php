@@ -2,17 +2,17 @@
 
 class Person
 {
-    public string $cpf;
-    public string $name;
+    private string $cpf;
+    protected string $name;
 
-    public function __construct(CPF $cpf, string $name)
+    public function __construct(CPF $employeesCpf, string $employeesName)
     {
-        $this->cpf = $cpf->getNumberCPF();
-        $this->name = $name;
-        $this->validateAccOwnerName($name);
+        $this->cpf = $employeesCpf->getNumberCPF();
+        $this->name = $employeesName;
+        $this->validateAccOwnerName($employeesName);
     }
 
-    private function validateAccOwnerName(string $nameToBeValidated)
+    protected function validateAccOwnerName(string $nameToBeValidated)
     {
         if (strlen($nameToBeValidated) < 5) {
             echo "Nome precisa ter pelo menos 5 caracteres";
