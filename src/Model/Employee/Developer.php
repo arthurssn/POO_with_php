@@ -8,4 +8,9 @@ class Developer extends Employee
     {
         $this->increaseSalary($this->getEmployeeSalary() * 0.75);
     }
+
+    public function calculateBonus(): float
+    {
+        return 500.0;
+    }
 }
