@@ -1,11 +1,12 @@
 <?php
 
 namespace Bank\Model\Account;
-class Account
+
+abstract class Account
 {
     private static int $numberOfAccountsCreated = 0;
     protected OwnerAccount $ownerAccount;
-    private float $accountBalance;
+    protected float $accountBalance;
 
     public function __construct(OwnerAccount $ownerAccount)
     {
@@ -25,31 +26,23 @@ class Account
         self::$numberOfAccountsCreated--;
     }
 
-    public function transferMoney(float $amountMoneyToTransfer, Account $destinationAccount): void
-    {
-        if (!$this->haveAvailableBalance($amountMoneyToTransfer)) {
-            echo "Saldo indisponível";
-            return;
-        }
-        $this->withdrawMoney($amountMoneyToTransfer);
-        $destinationAccount->depositMoney($amountMoneyToTransfer);
-    }
-
-    private function haveAvailableBalance(float $amountToWithdraw): bool
-    {
-        return $this->accountBalance > $amountToWithdraw;
-    }
-
     public function withdrawMoney(float $amountToWithdraw)
     {
         $percentageChargedPerWithdrawal = 0.05;
-        $withdrawalFee = $amountToWithdraw * $percentageChargedPerWithdrawal;
+        $withdrawalFee = $amountToWithdraw * $this->returnPercentageChargedPerWithdrawal();
         $withdrawnAmount = $amountToWithdraw + $withdrawalFee;
         if (!$this->haveAvailableBalance($withdrawnAmount)) {
             echo "Saldo indisponível";
             return;
         }
         $this->accountBalance -= $withdrawnAmount;
+    }
+
+    abstract function returnPercentageChargedPerWithdrawal(): float;
+
+    protected function haveAvailableBalance(float $amountToWithdraw): bool
+    {
+        return $this->accountBalance > $amountToWithdraw;
     }
 
     public function depositMoney(float $amountMoneyToDeposit)
@@ -61,5 +54,4 @@ class Account
     {
         return $this->accountBalance;
     }
-
 }
