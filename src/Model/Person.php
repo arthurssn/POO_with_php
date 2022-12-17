@@ -10,10 +10,10 @@ abstract class Person
     {
         $this->cpf = $cpf->getNumberCPF();
         $this->name = $name;
-        $this->validateAccOwnerName($name);
+        $this->validateName($name);
     }
 
-    protected function validateAccOwnerName(string $nameToBeValidated)
+    final protected function validateName(string $nameToBeValidated)
     {
         if (strlen($nameToBeValidated) < 5) {
             echo "Nome precisa ter pelo menos 5 caracteres";

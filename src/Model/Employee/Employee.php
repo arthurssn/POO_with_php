@@ -21,7 +21,7 @@ abstract class Employee extends Person
 
     public function setEmployeesName(string $newName)
     {
-        $this->validateAccOwnerName($newName);
+        $this->validateName($newName);
         $this->name = $newName;
     }
 
