@@ -2,7 +2,7 @@
 require_once './autoload.php';
 
 use Bank\Model\{CPF, Address};
-use Bank\Model\Account\{OwnerAccount, Account, SavingsAccount};
+use Bank\Model\Account\{OwnerAccount, SavingsAccount};
 
 $cpf = new CPF('123.456.789-10');
 $address = new Address(
