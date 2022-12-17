@@ -2,9 +2,10 @@
 
 namespace Bank\Model\Account;
 
+use Bank\Interfaces\CanAuthenticate;
 use Bank\Model\{Person, Address, CPF};
 
-class OwnerAccount extends Person
+class OwnerAccount extends Person implements CanAuthenticate
 {
     private Address $address;
 
@@ -17,5 +18,10 @@ class OwnerAccount extends Person
     public function getAddress(): Address
     {
         return $this->address;
+    }
+
+    public function checkIfCorrectPassword(string $password): bool
+    {
+        return $password = '321';
     }
 }
