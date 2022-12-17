@@ -1,6 +1,13 @@
 <?php
+
 namespace Bank\Model;
-class Address
+/**
+ * @property-read string $neighborhood
+ * @property-read string $street
+ * @property-read string $number
+ * @property-write  string $city
+ */
+final class Address
 {
     private string $city;
     private string $neighborhood;
@@ -20,6 +27,11 @@ class Address
         return $this->city;
     }
 
+    public function setCity($newName): string
+    {
+        return $this->city = $newName;
+    }
+
     public function getNeighborhood(): string
     {
         return $this->neighborhood;
@@ -33,5 +45,28 @@ class Address
     public function getNumber(): string
     {
         return $this->number;
+    }
+
+    public function __toString(): string
+    {
+        return "{$this->street}, {$this->number}, {$this->neighborhood}, {$this->city}";
+    }
+
+    public function __call($name, $arguments)
+    {
+        echo "\n\nO método {$name}({$arguments}) não existe.\n\n";
+    }
+
+    public function __get($name)
+    {
+        $method = 'get' . ucfirst($name);
+        return $this->$method();
+    }
+
+    public function __set($name, $value)
+    {
+        $name = ucfirst($name);
+        $method = "set{$name}";
+        return $this->$method($value);
     }
 }

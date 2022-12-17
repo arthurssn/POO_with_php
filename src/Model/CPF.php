@@ -1,6 +1,7 @@
 <?php
+
 namespace Bank\Model;
-class CPF
+final class CPF
 {
     private string $numberCPF;
 
