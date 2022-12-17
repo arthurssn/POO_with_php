@@ -1,15 +1,16 @@
 <?php
+
 namespace Bank\Model;
 class Person
 {
-    private string $cpf;
     protected string $name;
+    private string $cpf;
 
-    public function __construct(CPF $employeesCpf, string $employeesName)
+    public function __construct(CPF $cpf, string $name)
     {
-        $this->cpf = $employeesCpf->getNumberCPF();
-        $this->name = $employeesName;
-        $this->validateAccOwnerName($employeesName);
+        $this->cpf = $cpf->getNumberCPF();
+        $this->name = $name;
+        $this->validateAccOwnerName($name);
     }
 
     protected function validateAccOwnerName(string $nameToBeValidated)

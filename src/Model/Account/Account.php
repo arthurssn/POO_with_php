@@ -1,4 +1,5 @@
 <?php
+
 namespace Bank\Model\Account;
 class Account
 {
@@ -41,11 +42,14 @@ class Account
 
     public function withdrawMoney(float $amountToWithdraw)
     {
-        if (!$this->haveAvailableBalance($amountToWithdraw)) {
+        $percentageChargedPerWithdrawal = 0.05;
+        $withdrawalFee = $amountToWithdraw * $percentageChargedPerWithdrawal;
+        $withdrawnAmount = $amountToWithdraw + $withdrawalFee;
+        if (!$this->haveAvailableBalance($withdrawnAmount)) {
             echo "Saldo indisponível";
             return;
         }
-        $this->accountBalance -= $amountToWithdraw;
+        $this->accountBalance -= $withdrawnAmount;
     }
 
     public function depositMoney(float $amountMoneyToDeposit)
